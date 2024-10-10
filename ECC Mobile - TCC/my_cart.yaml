@@ -1,0 +1,194 @@
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pages/new_card/new_card_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import 'my_cards_model.dart';
+export 'my_cards_model.dart';
+
+class MyCardsWidget extends StatefulWidget {
+  const MyCardsWidget({super.key});
+
+  @override
+  State<MyCardsWidget> createState() => _MyCardsWidgetState();
+}
+
+class _MyCardsWidgetState extends State<MyCardsWidget> {
+  late MyCardsModel _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => MyCardsModel());
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: Color(0xFFF5F5F5),
+      appBar: AppBar(
+        backgroundColor: Color(0xDFFEFEFE),
+        iconTheme: IconThemeData(color: Color(0xFF282828)),
+        automaticallyImplyLeading: true,
+        title: Text(
+          'Meus Cartões',
+          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                fontFamily: 'Nunito',
+                fontSize: 17,
+                letterSpacing: 0.0,
+              ),
+        ),
+        actions: [],
+        centerTitle: true,
+        elevation: 4,
+      ),
+      body: SafeArea(
+        top: true,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 7, 0, 0),
+                      child: Slidable(
+                        endActionPane: ActionPane(
+                          motion: const ScrollMotion(),
+                          extentRatio: 0.25,
+                          children: [
+                            SlidableAction(
+                              label: 'Excluir',
+                              backgroundColor: Colors.blue,
+                              icon: Icons.restore_from_trash,
+                              onPressed: (_) {
+                                print('SlidableActionWidget pressed ...');
+                              },
+                            ),
+                          ],
+                        ),
+                        child: ListTile(
+                          title: Text(
+                            'Visa **** 8551',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Nunito',
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          trailing: Icon(
+                            Icons.arrow_right,
+                            color: Color(0xFF303030),
+                            size: 20,
+                          ),
+                          tileColor: Colors.white,
+                          dense: false,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
+                      child: Slidable(
+                        endActionPane: ActionPane(
+                          motion: const ScrollMotion(),
+                          extentRatio: 0.25,
+                          children: [
+                            SlidableAction(
+                              label: 'Excluir',
+                              backgroundColor: Colors.blue,
+                              icon: Icons.restore_from_trash,
+                              onPressed: (_) {
+                                print('SlidableActionWidget pressed ...');
+                              },
+                            ),
+                          ],
+                        ),
+                        child: ListTile(
+                          title: Text(
+                            'MasterCard **** 0650',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Nunito',
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          trailing: Icon(
+                            Icons.arrow_right,
+                            color: Color(0xFF303030),
+                            size: 20,
+                          ),
+                          tileColor: Colors.white,
+                          dense: false,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 7, 0, 0),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.fade,
+                              duration: Duration(milliseconds: 0),
+                              reverseDuration: Duration(milliseconds: 0),
+                              child: NewCardWidget(),
+                            ),
+                          );
+                        },
+                        child: ListTile(
+                          leading: Icon(
+                            Icons.credit_card,
+                          ),
+                          title: Text(
+                            'Adiconar novo cartão',
+                            style: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Nunito',
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          trailing: Icon(
+                            Icons.add,
+                            color: Color(0xFF303030),
+                            size: 17,
+                          ),
+                          tileColor: Colors.white,
+                          dense: true,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

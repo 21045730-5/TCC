@@ -1,0 +1,79 @@
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import 'payment_slip_model.dart';
+export 'payment_slip_model.dart';
+
+class PaymentSlipWidget extends StatefulWidget {
+  const PaymentSlipWidget({super.key});
+
+  @override
+  State<PaymentSlipWidget> createState() => _PaymentSlipWidgetState();
+}
+
+class _PaymentSlipWidgetState extends State<PaymentSlipWidget> {
+  late PaymentSlipModel _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => PaymentSlipModel());
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: Color(0xFFF5F5F5),
+      appBar: AppBar(
+        backgroundColor: Color(0xDFFEFEFE),
+        iconTheme: IconThemeData(color: Color(0xFF282828)),
+        automaticallyImplyLeading: true,
+        title: Text(
+          'Pagamento com Boleto',
+          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                fontFamily: 'Nunito',
+                fontSize: 17,
+                letterSpacing: 0.0,
+              ),
+        ),
+        actions: [],
+        centerTitle: true,
+        elevation: 4,
+      ),
+      body: SafeArea(
+        top: true,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Align(
+              alignment: AlignmentDirectional(0.05, 0),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 7, 0, 0),
+                child: Image.network(
+                  'https://www.agendasustentabilidade.com.br/wp-content/uploads/2020/02/Captura-de-Tela-2014-01-16-%C3%A0s-14.20.21.png',
+                  width: MediaQuery.sizeOf(context).width * 0.97,
+                  height: 300,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
